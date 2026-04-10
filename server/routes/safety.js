@@ -103,7 +103,7 @@ router.post('/analyze', async (req, res) => {
   const incident = INCIDENTS.find(i => i.id === incidentId) || { description: description || 'General safety assessment' };
 
   try {
-    const model = getModel('gemini-2.0-flash');
+    const model = getModel('gemini-2.5-flash-lite');
     const prompt = `Analyze this stadium safety incident and provide a structured response plan:\n\nIncident: ${incident.title || 'Safety Assessment'}\nDescription: ${incident.description}\nLocation: ${incident.location || 'Unknown'}\nSeverity: ${incident.severity || 'TBD'}/5\nCurrent Resources: Medical (${RESOURCES.medical.available}/${RESOURCES.medical.total} available), Security (${RESOURCES.security.available}/${RESOURCES.security.total}), Fire (${RESOURCES.fire.available}/${RESOURCES.fire.total})\nVenue Occupancy: 87,521 / 100,024\n\nProvide:\n1. Risk Assessment (1-2 sentences)\n2. Immediate Actions (3 bullet points)\n3. Resource Deployment recommendation\n4. Estimated Resolution Time`;
 
     // SSE streaming

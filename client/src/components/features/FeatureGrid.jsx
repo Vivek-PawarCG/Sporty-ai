@@ -5,10 +5,10 @@ export default function FeatureGrid() {
   return (
     <section className="section" aria-labelledby="features-title">
       <h2 className="section-title" id="features-title">
-        Core <span>Features</span>
+        What It <span>Does</span>
       </h2>
       <p className="section-desc">
-        Six AI-powered pillars solving the real pain points of large-scale venues
+        Everything you need for a seamless match day
       </p>
       <div className="cards-grid" role="list">
         {FEATURES.map((f, i) => {

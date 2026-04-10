@@ -5,16 +5,16 @@ export default function Hero() {
     <section className="hero" aria-labelledby="hero-title">
       <div className="hero-eyebrow">
         <div className="dot-pulse" aria-hidden="true" />
-        Gen AI · Powered by Google
+        Powered by Google AI
       </div>
       <h1 id="hero-title">
-        The <em>Intelligent</em><br />Stadium Experience
+        Your <em>Smart</em><br />Stadium Companion
       </h1>
       <p className="hero-sub">
-        A real-time AI platform that eliminates crowd chaos, slashes wait times,
-        and turns 100,000-person venues into seamlessly orchestrated experiences.
+        Navigate crowds, skip queues, order food to your seat, 
+        and stay safe — all powered by real-time AI.
       </p>
-      <div className="stats-bar" role="list" aria-label="Key performance metrics">
+      <div className="stats-bar" role="list" aria-label="Key metrics">
         {STATS.map((s, i) => (
           <div key={i} className="stat" role="listitem">
             <div className="stat-value" aria-label={`${s.label}: ${s.value}`}>

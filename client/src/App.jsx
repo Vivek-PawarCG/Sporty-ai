@@ -32,10 +32,11 @@ export default function App() {
       {/* Main content */}
       <main id="main-content" className="container">
         <Hero />
-        <FeatureGrid />
         <DemoPanel />
-        <ArchDiagram />
-        <Roadmap />
+        <FeatureGrid />
+
+        {/* <ArchDiagram />
+        <Roadmap /> */}
       </main>
 
       {/* Footer */}

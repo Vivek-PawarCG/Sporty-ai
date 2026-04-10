@@ -50,7 +50,7 @@ router.post('/recommend', async (req, res) => {
   const { preferences = '', dietary = [], budget } = req.body;
 
   try {
-    const model = getModel('gemini-2.0-flash');
+    const model = getModel('gemini-2.5-flash-lite');
     const menuText = MENU.map(i =>
       `${i.name} ($${i.price}) [${i.dietary.join(',') || 'none'}] - ${i.category}`
     ).join('\n');

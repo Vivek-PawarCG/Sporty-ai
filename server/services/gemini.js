@@ -1,7 +1,7 @@
 /**
  * Gemini AI Service
  * 
- * Provides the Gemini 2.0 Flash generative AI client
+ * Provides the Gemini 2.5 Flash Lite Flash generative AI client
  * for the AI Concierge chat and content generation.
  * Uses @google/generative-ai SDK.
  */
@@ -19,20 +19,21 @@ function getGenAI() {
   if (!genAI) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      throw new Error('GEMINI_API_KEY environment variable is required');
+      console.error('[GEMINI] FATAL: GEMINI_API_KEY is not set. Available env vars:', Object.keys(process.env).filter(k => k.includes('GEMINI') || k.includes('API')).join(', ') || 'none matching');
+      throw new Error('GEMINI_API_KEY environment variable is required. Set it in Cloud Run env vars or Secret Manager.');
     }
     genAI = new GoogleGenerativeAI(apiKey);
-    console.log('[GEMINI] Client initialized with Gemini 2.0 Flash');
+    console.log(`[GEMINI] Client initialized (key length: ${apiKey.length})`);
   }
   return genAI;
 }
 
 /**
  * Returns a configured Gemini generative model.
- * @param {string} [modelName='gemini-2.0-flash'] - Model to use
+ * @param {string} [modelName='gemini-2.5-flash-lite'] - Model to use
  * @returns {import('@google/generative-ai').GenerativeModel}
  */
-function getModel(modelName = 'gemini-2.0-flash') {
+function getModel(modelName = 'gemini-2.5-flash-lite') {
   return getGenAI().getGenerativeModel({ model: modelName });
 }
 

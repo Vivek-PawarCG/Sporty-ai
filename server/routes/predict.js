@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
       data: predictions,
       meta: {
         timestamp: new Date().toISOString(),
-        model: 'vertex-ai-gemini-2.0-flash',
+        model: 'vertex-ai-gemini-2.5-flash-lite',
         latencyMs: latency,
       },
     });

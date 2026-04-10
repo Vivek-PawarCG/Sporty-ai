@@ -4,10 +4,10 @@ export default function Roadmap() {
   return (
     <section className="section" aria-labelledby="roadmap-title">
       <h2 className="section-title" id="roadmap-title">
-        Build <span>Roadmap</span>
+        <span>Roadmap</span>
       </h2>
       <p className="section-desc">
-        Hackathon MVP → Production-ready platform
+        From MVP to full venue intelligence
       </p>
       <div className="roadmap" role="list" aria-label="Development roadmap phases">
         {ROADMAP.map((r, i) => (

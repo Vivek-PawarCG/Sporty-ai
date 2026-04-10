@@ -3,7 +3,7 @@
 > AI-powered real-time venue management for large-scale sporting events. Built with Google Gemini, Vertex AI, and 9 Google Cloud services.
 
 [![Google Cloud](https://img.shields.io/badge/Google%20Cloud-Run-4285F4?logo=googlecloud)](https://cloud.google.com/run)
-[![Gemini](https://img.shields.io/badge/Gemini-2.0%20Flash-00e676?logo=google)](https://ai.google.dev)
+[![Gemini](https://img.shields.io/badge/Gemini-2.5%20Flash-00e676?logo=google)](https://ai.google.dev)
 [![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js)](https://nodejs.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
 
@@ -81,7 +81,7 @@ The AI makes decisions based on a **multi-signal approach**:
 
 | Feature | Description | Google Service |
 |---------|-------------|----------------|
-| **AI Concierge** | Chat with Gemini for directions, food, wait times | Gemini 2.0 Flash |
+| **AI Concierge** | Chat with Gemini for directions, food, wait times | Gemini 2.5 Flash Lite Flash |
 | **Crowd Flow** | Real-time density heatmap with auto-rerouting | Vertex AI Vision |
 | **Wait Times** | Predictive queue forecasting | Vertex AI Forecast |
 | **Smart Entry** | AI-orchestrated gate management | Gemini Agents |
@@ -94,7 +94,7 @@ The AI makes decisions based on a **multi-signal approach**:
 
 | # | Service | Package | Purpose |
 |---|---------|---------|---------|
-| 1 | **Gemini 2.0 Flash** | `@google/generative-ai` | AI Concierge chat with streaming responses |
+| 1 | **Gemini 2.5 Flash Lite Flash** | `@google/generative-ai` | AI Concierge chat with streaming responses |
 | 2 | **Vertex AI** | `@google-cloud/vertexai` | Predictive crowd density forecasting |
 | 3 | **BigQuery** | `@google-cloud/bigquery` | Historical crowd analytics and pattern queries |
 | 4 | **Cloud Logging** | `@google-cloud/logging` | Structured application and request logging |
@@ -205,7 +205,7 @@ TEST_URL=http://localhost:8080 npx jest __tests__/routes.test.js
 |-------|-----------|
 | **Backend** | Node.js, Express.js |
 | **Frontend** | React 19, Vite 6 |
-| **AI/ML** | Gemini 2.0 Flash, Vertex AI |
+| **AI/ML** | Gemini 2.5 Flash Lite Flash, Vertex AI |
 | **Database** | Firestore, BigQuery |
 | **Auth** | Firebase Authentication |
 | **Security** | Helmet, CORS, Rate Limiting, HPP, Secret Manager |

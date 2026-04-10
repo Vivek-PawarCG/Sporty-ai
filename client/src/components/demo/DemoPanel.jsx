@@ -47,10 +47,10 @@ export default function DemoPanel() {
   return (
     <section className="section" aria-labelledby="demo-title">
       <h2 className="section-title" id="demo-title">
-        Live <span>Demo</span>
+        Try It <span>Now</span>
       </h2>
       <p className="section-desc">
-        Interactive preview — chat with the AI concierge, order food, or explore live stadium data
+        Explore the AI concierge, live crowd data, food ordering, and safety tools
       </p>
       <div className="demo-panel">
         <div className="demo-tabs" role="tablist" aria-label="Demo features" onKeyDown={handleKeyDown}>

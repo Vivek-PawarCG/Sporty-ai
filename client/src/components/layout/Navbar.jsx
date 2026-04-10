@@ -8,8 +8,8 @@ export default function Navbar() {
           <Zap size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 6 }} aria-hidden="true" />
           SPORTY<span>-AI</span>
         </a>
-        <div className="navbar-badge" aria-label="Built for Google Antigravity PromptWars 2026">
-          PromptWars 2026
+        <div className="navbar-badge">
+          Live
         </div>
       </div>
     </nav>

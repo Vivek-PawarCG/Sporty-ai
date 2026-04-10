@@ -295,8 +295,8 @@ const features = [
   {
     icon: "🤖",
     title: "Gemini AI Concierge",
-    text: "Attendees ask anything via voice or text — gate directions, food orders, nearest restroom, seat upgrades. Gemini 2.0 Flash responds in <1s in multiple languages.",
-    tag: "Gemini 2.0 Flash"
+    text: "Attendees ask anything via voice or text — gate directions, food orders, nearest restroom, seat upgrades. Gemini 2.5 Flash Lite Flash responds in <1s in multiple languages.",
+    tag: "Gemini 2.5 Flash Lite Flash"
   },
   {
     icon: "🗺️",
@@ -337,7 +337,7 @@ const archLayers = [
   },
   {
     title: "AI & Intelligence Layer",
-    chips: ["Gemini 2.0 Flash API", "Gemma 3 On-Device", "Vertex AI Vision", "Vertex AI Forecast", "Google ADK Agents", "Multimodal RAG"]
+    chips: ["Gemini 2.5 Flash Lite Flash API", "Gemma 3 On-Device", "Vertex AI Vision", "Vertex AI Forecast", "Google ADK Agents", "Multimodal RAG"]
   },
   {
     title: "Data & Sensing Layer",
@@ -415,13 +415,13 @@ const roadmap = [
     desc: "Order food from app. Gemma 3 personalizes menu. BLE beacon-based precise location."
   },
   {
-    phase: "Phase 4", done: false, color: rgba(224,255,232,0.2),
+    phase: "Phase 4", done: false, color: rgba(224, 255, 232, 0.2),
     title: "Multimodal Safety & Full Venue Autonomy",
     desc: "AI safety detection, incident response agents, full ADK orchestration across all venue systems."
   }
 ];
 
-function rgba(r,g,b,a) { return `rgba(${r},${g},${b},${a})`; }
+function rgba(r, g, b, a) { return `rgba(${r},${g},${b},${a})`; }
 
 function densityColor(d) {
   if (d < 0.35) return "#00e676";

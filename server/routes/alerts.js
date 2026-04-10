@@ -81,7 +81,7 @@ router.post('/generate', async (req, res) => {
   const { crowdData } = req.body;
 
   try {
-    const model = getModel('gemini-2.0-flash');
+    const model = getModel('gemini-2.5-flash-lite');
     const prompt = `You are a stadium safety AI. Analyze this crowd data and generate 1-2 safety alerts if any zones are concerning. 
     
 Current data: ${JSON.stringify(crowdData || LIVE_ALERTS)}

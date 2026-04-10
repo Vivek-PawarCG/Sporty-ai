@@ -37,7 +37,7 @@ async function generatePrediction(crowdData) {
   const vertex = getVertexAI();
 
   if (vertex) {
-    const model = vertex.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = vertex.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
     const prompt = `Analyze the following real-time crowd data from a stadium and predict conditions for the next 15 minutes. Return a JSON object with zone predictions.
 
 Current data: ${JSON.stringify(crowdData)}

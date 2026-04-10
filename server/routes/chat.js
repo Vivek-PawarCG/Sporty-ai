@@ -2,7 +2,7 @@
  * Chat Route — AI Concierge
  * POST /api/chat
  * 
- * Streams Gemini 2.0 Flash responses via Server-Sent Events (SSE).
+ * Streams Gemini 2.5 Flash Lite Flash responses via Server-Sent Events (SSE).
  * Provides real-time stadium intelligence to attendees.
  */
 
@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const model = getModel('gemini-2.0-flash');
+    const model = getModel('gemini-2.5-flash-lite');
 
     // Convert history to Gemini format
     const chatHistory = history.map(msg => ({
@@ -87,15 +87,21 @@ router.post('/', async (req, res) => {
 
   } catch (err) {
     console.error('[CHAT] Error:', err.message);
-    logEvent('ERROR', 'Chat generation failed', { error: err.message });
+    console.error('[CHAT] Stack:', err.stack);
+    console.error('[CHAT] Full error:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
+    logEvent('ERROR', 'Chat generation failed', { error: err.message, stack: err.stack?.slice(0, 500) });
 
-    // If headers haven't been sent, return JSON error
+    // If headers haven't been sent, return JSON error with details
     if (!res.headersSent) {
-      return res.status(500).json({ error: 'Failed to generate response. Please try again.' });
+      return res.status(500).json({
+        error: 'Failed to generate response.',
+        detail: err.message,
+        hint: err.message.includes('API_KEY') ? 'GEMINI_API_KEY env var may not be set' : undefined,
+      });
     }
 
     // If streaming already started, send error via SSE
-    res.write(`data: ${JSON.stringify({ error: 'Stream interrupted. Please try again.' })}\n\n`);
+    res.write(`data: ${JSON.stringify({ error: `Stream error: ${err.message}` })}\n\n`);
     res.end();
   }
 });

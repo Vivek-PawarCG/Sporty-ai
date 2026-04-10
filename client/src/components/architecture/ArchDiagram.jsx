@@ -5,10 +5,10 @@ export default function ArchDiagram() {
   return (
     <section className="section" aria-labelledby="arch-title">
       <h2 className="section-title" id="arch-title">
-        System <span>Architecture</span>
+        How It <span>Works</span>
       </h2>
       <p className="section-desc">
-        Built on Google Cloud with Gemini, Vertex AI, and ADK at its core
+        Built on Google Cloud with Gemini and Vertex AI
       </p>
       <div className="arch" role="img" aria-label="System architecture diagram showing four technology layers: Attendee, AI and Intelligence, Data and Sensing, and Platform">
         <div className="arch-layers">
