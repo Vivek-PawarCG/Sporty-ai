@@ -55,7 +55,9 @@ export function useChat(endpoint = '/api/chat') {
 
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        throw new Error(err.error || 'Server error');
+        const msg = err.detail || err.error || `Server error (${res.status})`;
+        console.error('[Chat] Server error:', JSON.stringify(err));
+        throw new Error(msg);
       }
 
       // Read SSE stream

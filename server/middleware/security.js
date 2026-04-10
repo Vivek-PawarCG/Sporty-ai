@@ -43,21 +43,24 @@ function setupSecurity(app) {
   // CORS — restrict to allowed origins
   const allowedOrigins = process.env.ALLOWED_ORIGINS
     ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim())
-    : ['http://localhost:5173', 'http://localhost:8080'];
+    : ['http://localhost:5173', 'http://localhost:8080', 'http://localhost:3001'];
 
   app.use(cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (mobile apps, curl, etc.)
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
+      // Allow same-origin requests (no origin header) — this covers
+      // Cloud Run monolith where frontend & backend share the same URL
+      if (!origin) return callback(null, true);
+      // Allow configured origins
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      // Allow all Cloud Run URLs (*.run.app)
+      if (origin.endsWith('.run.app')) return callback(null, true);
+      console.warn(`[CORS] Blocked origin: ${origin}`);
+      callback(new Error(`Not allowed by CORS: ${origin}`));
     },
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
-    maxAge: 86400, // 24 hours preflight cache
+    maxAge: 86400,
   }));
 
   // Rate Limiting — 100 requests per 15 minutes per IP
