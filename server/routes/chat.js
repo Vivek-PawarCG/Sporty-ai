@@ -49,11 +49,18 @@ router.post('/', async (req, res) => {
   try {
     const model = getModel('gemini-2.5-flash-lite');
 
-    // Convert history to Gemini format
-    const chatHistory = history.map(msg => ({
-      role: msg.role === 'ai' ? 'model' : 'user',
-      parts: [{ text: msg.text }],
-    }));
+    // Convert history to Gemini format — must start with 'user' role
+    const chatHistory = history
+      .map(msg => ({
+        role: msg.role === 'ai' ? 'model' : 'user',
+        parts: [{ text: msg.text || '' }],
+      }))
+      .filter(msg => msg.parts[0].text); // Remove empty messages
+
+    // Ensure first message is from user (Gemini requirement)
+    while (chatHistory.length > 0 && chatHistory[0].role === 'model') {
+      chatHistory.shift();
+    }
 
     const chat = model.startChat({
       history: chatHistory,
