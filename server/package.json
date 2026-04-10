@@ -1,0 +1,32 @@
+{
+  "name": "sporty-ai-server",
+  "version": "1.0.0",
+  "description": "Express.js backend for Sporty-AI with Google Cloud services",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "helmet": "^8.0.0",
+    "cors": "^2.8.5",
+    "express-rate-limit": "^7.4.0",
+    "hpp": "^0.2.3",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0",
+    "express-validator": "^7.2.0",
+    "@google/generative-ai": "^0.21.0",
+    "@google-cloud/vertexai": "^1.9.0",
+    "@google-cloud/bigquery": "^7.9.0",
+    "@google-cloud/logging": "^11.2.0",
+    "@google-cloud/secret-manager": "^5.6.0",
+    "@google-cloud/monitoring": "^4.1.0",
+    "firebase-admin": "^13.0.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}

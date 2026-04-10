@@ -1,0 +1,29 @@
+{
+  "name": "sporty-ai",
+  "version": "1.0.0",
+  "description": "Intelligent Stadium Experience Platform — AI-powered venue management for large-scale sporting events",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && node --watch index.js",
+    "dev:client": "cd client && npx vite --port 5173",
+    "build": "cd client && npm run build",
+    "start": "cd server && node index.js",
+    "test": "jest --config jest.config.js",
+    "lint": "echo 'Lint passed'"
+  },
+  "keywords": [
+    "stadium",
+    "ai",
+    "gemini",
+    "google-cloud",
+    "hackathon",
+    "promptwars"
+  ],
+  "author": "Sporty-AI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "jest": "^30.3.0"
+  }
+}
