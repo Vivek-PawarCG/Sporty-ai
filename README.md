@@ -155,7 +155,7 @@ Meaningful integration of Google services across the platform:
 
 | # | Service | Package | Purpose |
 |---|---------|---------|---------|
-| 1 | **Gemini 2.0 Flash** | `@google/generative-ai` | AI Concierge chat + food recommendations + safety analysis |
+| 1 | **Gemini 2.5 Flash Lite** | `@google/generative-ai` | AI Concierge chat + food recommendations + safety analysis |
 | 2 | **Vertex AI** | `@google-cloud/vertexai` | Predictive crowd density forecasting |
 | 3 | **BigQuery** | `@google-cloud/bigquery` | Historical crowd analytics queries |
 | 4 | **Cloud Logging** | `@google-cloud/logging` | Structured JSON application logs |

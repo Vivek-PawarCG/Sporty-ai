@@ -149,6 +149,16 @@ body {
   color: var(--color-primary);
   letter-spacing: 3px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+  border-radius: var(--radius-sm);
+  filter: drop-shadow(0 0 8px var(--color-primary-glow));
 }
 
 .navbar-logo span {
