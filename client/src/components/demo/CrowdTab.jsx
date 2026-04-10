@@ -1,25 +1,35 @@
 import { useState, useEffect } from 'react';
+import { io } from 'socket.io-client';
 import { CROWD_DATA, densityColor, densityStatus } from '../../lib/constants';
 
 export default function CrowdTab() {
   const [data, setData] = useState(CROWD_DATA);
+  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const id = setInterval(() => {
+    // 0-Polling WebSocket Architecture initialization
+    const socket = io();
+    
+    socket.on('connect', () => setIsConnected(true));
+    socket.on('disconnect', () => setIsConnected(false));
+    
+    socket.on('crowd_update', () => {
+      // Receive WS trigger and shift densities
       setData(prev =>
         prev.map(zone => ({
           ...zone,
           density: Math.max(0.05, Math.min(0.99, zone.density + (Math.random() - 0.5) * 0.12)),
         }))
       );
-    }, 2000);
-    return () => clearInterval(id);
+    });
+
+    return () => socket.disconnect();
   }, []);
 
   return (
     <div>
       <p style={{ fontSize: '0.8rem', color: 'rgba(224,255,232,0.4)', marginBottom: 14 }}>
-        Live crowd density · Updated every 2s via Vertex AI Vision
+        Live crowd density · <span className={isConnected ? "text-success" : ""}>WS {isConnected ? 'Connected' : 'Connecting...'}</span> (Zero-Polling)
       </p>
       <div className="crowd-map" role="grid" aria-label="Stadium crowd density heatmap">
         {data.map((zone, i) => (

@@ -48,18 +48,18 @@ describe('validateChatInput', () => {
   });
 
   test('rejects empty input', () => {
-    expect(validateChatInput('')).toEqual({ valid: false, error: 'Message is required' });
+    expect(validateChatInput('')).toEqual({ valid: false, error: 'Message cannot be empty' });
     expect(validateChatInput('   ')).toEqual({ valid: false, error: 'Message cannot be empty' });
   });
 
   test('rejects null/undefined input', () => {
-    expect(validateChatInput(null)).toEqual({ valid: false, error: 'Message is required' });
+    expect(validateChatInput(null)).toEqual({ valid: false, error: 'Message must be a string' });
     expect(validateChatInput(undefined)).toEqual({ valid: false, error: 'Message is required' });
   });
 
   test('rejects non-string input', () => {
-    expect(validateChatInput(123)).toEqual({ valid: false, error: 'Message is required' });
-    expect(validateChatInput({})).toEqual({ valid: false, error: 'Message is required' });
+    expect(validateChatInput(123)).toEqual({ valid: false, error: 'Message must be a string' });
+    expect(validateChatInput({})).toEqual({ valid: false, error: 'Message must be a string' });
   });
 
   test('rejects messages over 500 characters', () => {

@@ -1,28 +1,26 @@
-/**
- * Utility functions for input validation and sanitization.
- */
+const { z } = require('zod');
+
+// Zod schema for chat validation
+const chatSchema = z.string({
+  required_error: 'Message is required',
+  invalid_type_error: 'Message must be a string',
+})
+.min(1, 'Message cannot be empty')
+.max(500, 'Message must be under 500 characters')
+.transform(str => str.trim().replace(/<[^>]*>/g, ''));
 
 /**
- * Validates and sanitizes chat input.
+ * Validates and sanitizes chat input using Zod.
  * @param {string} message - User message
  * @returns {{ valid: boolean, error?: string, sanitized?: string }}
  */
 function validateChatInput(message) {
-  if (!message || typeof message !== 'string') {
-    return { valid: false, error: 'Message is required' };
+  const result = chatSchema.safeParse(message);
+  if (!result.success) {
+    const errorMsg = result.error?.issues?.[0]?.message || 'Invalid input';
+    return { valid: false, error: errorMsg };
   }
-
-  const trimmed = message.trim();
-  if (trimmed.length === 0) {
-    return { valid: false, error: 'Message cannot be empty' };
-  }
-  if (trimmed.length > 500) {
-    return { valid: false, error: 'Message must be under 500 characters' };
-  }
-
-  // Basic sanitization — strip HTML tags
-  const sanitized = trimmed.replace(/<[^>]*>/g, '');
-  return { valid: true, sanitized };
+  return { valid: true, sanitized: result.data };
 }
 
 module.exports = {

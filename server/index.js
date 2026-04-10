@@ -74,13 +74,46 @@ app.use((err, req, res, _next) => {
   });
 });
 
+const http = require('http');
+const { Server } = require('socket.io');
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST']
+  }
+});
+
+io.on('connection', (socket) => {
+  console.log(`🔌 Client connected: ${socket.id}`);
+  
+  // Push live crowd updates every 5 seconds (zero-polling architecture)
+  const crowdInterval = setInterval(() => {
+    socket.emit('crowd_update', {
+      timestamp: new Date().toISOString(),
+      zones: [
+        { id: 'gate-1', density: Math.random() * 0.9, waitTime: Math.floor(Math.random() * 20) },
+        { id: 'concourse-a', density: Math.random() * 0.9, waitTime: Math.floor(Math.random() * 15) },
+        { id: 'section-104', density: Math.random() * 0.9, waitTime: Math.floor(Math.random() * 5) }
+      ]
+    });
+  }, 5000);
+
+  socket.on('disconnect', () => {
+    clearInterval(crowdInterval);
+    console.log(`🔌 Client disconnected: ${socket.id}`);
+  });
+});
+
 // ─── Start Server ──────────────────────────────────────────────────────────
 const PORT = parseInt(process.env.PORT, 10) || 8080;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`\n  ⚡ Sporty-AI server running on port ${PORT}`);
   console.log(`  📂 Static: ${clientDist}`);
   console.log(`  🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`  🔒 Security middleware: active\n`);
+  console.log(`  🔒 Security middleware: active`);
+  console.log(`  🔌 WebSockets: active\n`);
 });
 
-module.exports = app;
+module.exports = { app, server, io };

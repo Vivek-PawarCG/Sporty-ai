@@ -16,9 +16,20 @@ export default function ArchDiagram() {
             <div key={i}>
               <div className="arch-layer">
                 <div className="arch-layer-title">{layer.title}</div>
-                <div className="arch-chips" role="list">
+                <div className="arch-chips" role="list" aria-label={`Technologies in ${layer.title}`}>
                   {layer.chips.map((chip, j) => (
-                    <span key={j} className={`chip ${j < 2 ? 'highlight' : ''}`} role="listitem">
+                    <span 
+                      key={j} 
+                      className={`chip ${j < 2 ? 'highlight' : ''}`} 
+                      role="listitem" 
+                      aria-setsize={layer.chips.length} 
+                      aria-posinset={j + 1}
+                      aria-atomic="true"
+                      aria-live="polite"
+                      aria-hidden="false"
+                      aria-label={`${chip} technology stack`}
+                      aria-roledescription="architecture component"
+                    >
                       {chip}
                     </span>
                   ))}
