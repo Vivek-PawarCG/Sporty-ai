@@ -33,8 +33,8 @@ export default function App() {
         <Hero />
         <FeatureGrid />
         <DemoPanel />
-        <ArchDiagram />
-        <Roadmap />
+        {/* <ArchDiagram />
+        <Roadmap /> */}
       </main>
 
       {/* Footer */}
