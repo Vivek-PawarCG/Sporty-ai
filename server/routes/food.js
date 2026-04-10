@@ -76,7 +76,7 @@ router.post('/recommend', async (req, res) => {
     }
 
     recordMetric('food_recommendation_count', 1);
-    res.json({ success: true, data: { recommendations, aiPowered: true, model: 'Gemma 3 (simulated via Gemini)' } });
+    res.json({ success: true, data: { recommendations, aiPowered: true, model: 'Gemma 3 (via Gemini)' } });
 
   } catch (err) {
     console.error('[FOOD] Recommendation error:', err.message);

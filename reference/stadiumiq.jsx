@@ -320,7 +320,7 @@ const features = [
     icon: "🍔",
     title: "AI Food & Beverage",
     text: "Order food to your seat via the app. Gemma 3 on-device model personalizes menu suggestions. Concession robots receive AI-dispatched orders.",
-    tag: "Gemma 3 (On-device)"
+    tag: "Gemma 3"
   },
   {
     icon: "🚨",
@@ -337,7 +337,7 @@ const archLayers = [
   },
   {
     title: "AI & Intelligence Layer",
-    chips: ["Gemini 2.5 Flash Lite Flash API", "Gemma 3 On-Device", "Vertex AI Vision", "Vertex AI Forecast", "Google ADK Agents", "Multimodal RAG"]
+    chips: ["Gemini 2.5 Flash Lite Flash API", "Gemma 3", "Vertex AI Vision", "Vertex AI Forecast", "Google ADK Agents", "Multimodal RAG"]
   },
   {
     title: "Data & Sensing Layer",

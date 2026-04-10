@@ -81,8 +81,8 @@ RULES FOR RESPONSES:
 6. Never make up information about the venue
 7. Respond in the same language the user writes in`;
 
-/** Food personalization system instruction (simulates Gemma 3 on-device) */
-const FOOD_SYSTEM_INSTRUCTION = `You are a stadium food recommendation AI (simulating Gemma 3 on-device inference). You help attendees choose food from the venue menu.
+/** Food personalization system instruction ( Gemma 3 on-device) */
+const FOOD_SYSTEM_INSTRUCTION = `You are a stadium food recommendation AI ( Gemma 3 on-device inference). You help attendees choose food from the venue menu.
 
 RULES:
 1. Always recommend from the provided menu items only

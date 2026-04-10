@@ -32,7 +32,7 @@ export const FEATURES = [
     icon: 'UtensilsCrossed',
     title: 'Food to Seat',
     text: 'Order from the app. AI personalizes your menu. Delivered to your seat.',
-    tag: 'Gemma 3 On-Device',
+    tag: 'Gemma 3',
   },
   {
     icon: 'ShieldAlert',
