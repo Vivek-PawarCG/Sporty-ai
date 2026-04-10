@@ -11,7 +11,7 @@
 
 ## 🎯 Chosen Vertical
 
-**Physical Event Experience** — A solution that improves the physical event experience for attendees at large-scale sporting venues, addressing crowd movement, waiting times, and real-time coordination.
+**Physical Event Experience** — This webapp is a solution that improves the physical event experience for attendees at large-scale sporting venues, addressing crowd movement, waiting times, and real-time coordination.
 
 ---
 
