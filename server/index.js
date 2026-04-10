@@ -18,6 +18,8 @@ const alertsRouter = require('./routes/alerts');
 const crowdRouter = require('./routes/crowd');
 const healthRouter = require('./routes/health');
 const metricsRouter = require('./routes/metrics');
+const foodRouter = require('./routes/food');
+const safetyRouter = require('./routes/safety');
 
 const app = express();
 
@@ -53,6 +55,8 @@ app.use('/api/predict', predictRouter);
 app.use('/api/alerts', alertsRouter);
 app.use('/api/crowd', crowdRouter);
 app.use('/api/metrics', metricsRouter);
+app.use('/api/food', foodRouter);
+app.use('/api/safety', safetyRouter);
 
 // ─── SPA Fallback ──────────────────────────────────────────────────────────
 // Serve index.html for all non-API, non-static routes (React Router support)

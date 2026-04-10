@@ -13,10 +13,11 @@ import FeatureGrid from './components/features/FeatureGrid';
 import DemoPanel from './components/demo/DemoPanel';
 import ArchDiagram from './components/architecture/ArchDiagram';
 import Roadmap from './components/roadmap/Roadmap';
+import ErrorBoundary from './components/ErrorBoundary';
 
 export default function App() {
   return (
-    <>
+    <ErrorBoundary>
       {/* Skip link for keyboard/screen reader users */}
       <a href="#main-content" className="skip-link">
         Skip to main content
@@ -33,12 +34,12 @@ export default function App() {
         <Hero />
         <FeatureGrid />
         <DemoPanel />
-        {/* <ArchDiagram />
-        <Roadmap /> */}
+        <ArchDiagram />
+        <Roadmap />
       </main>
 
       {/* Footer */}
       <Footer />
-    </>
+    </ErrorBoundary>
   );
 }

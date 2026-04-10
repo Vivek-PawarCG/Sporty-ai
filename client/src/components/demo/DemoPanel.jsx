@@ -1,15 +1,19 @@
 import { useState, useCallback } from 'react';
-import { Bot, Map, Timer, ShieldAlert } from 'lucide-react';
+import { Bot, Map, Timer, ShieldAlert, UtensilsCrossed, ShieldCheck } from 'lucide-react';
 import ChatTab from './ChatTab';
 import CrowdTab from './CrowdTab';
 import WaitTab from './WaitTab';
 import AlertsTab from './AlertsTab';
+import FoodTab from './FoodTab';
+import SafetyTab from './SafetyTab';
 
 const TABS = [
   { id: 'chat', label: 'AI Concierge', Icon: Bot, Comp: ChatTab },
   { id: 'crowd', label: 'Crowd Map', Icon: Map, Comp: CrowdTab },
   { id: 'wait', label: 'Wait Times', Icon: Timer, Comp: WaitTab },
+  { id: 'food', label: 'Food & Bev', Icon: UtensilsCrossed, Comp: FoodTab },
   { id: 'alerts', label: 'Alerts', Icon: ShieldAlert, Comp: AlertsTab },
+  { id: 'safety', label: 'Safety AI', Icon: ShieldCheck, Comp: SafetyTab },
 ];
 
 export default function DemoPanel() {
@@ -37,7 +41,6 @@ export default function DemoPanel() {
     }
 
     setActiveTab(TABS[nextIdx].id);
-    // Focus the new tab
     document.getElementById(`tab-${TABS[nextIdx].id}`)?.focus();
   }, [activeTab]);
 
@@ -47,7 +50,7 @@ export default function DemoPanel() {
         Live <span>Demo</span>
       </h2>
       <p className="section-desc">
-        Interactive preview — chat with the AI concierge or explore live stadium data
+        Interactive preview — chat with the AI concierge, order food, or explore live stadium data
       </p>
       <div className="demo-panel">
         <div className="demo-tabs" role="tablist" aria-label="Demo features" onKeyDown={handleKeyDown}>
@@ -62,8 +65,8 @@ export default function DemoPanel() {
               tabIndex={activeTab === t.id ? 0 : -1}
               onClick={() => setActiveTab(t.id)}
             >
-              <t.Icon size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 6 }} aria-hidden="true" />
-              {t.label}
+              <t.Icon size={13} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 5 }} aria-hidden="true" />
+              <span className="tab-label">{t.label}</span>
             </button>
           ))}
         </div>
