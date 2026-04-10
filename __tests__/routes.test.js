@@ -156,3 +156,50 @@ describe('POST /api/chat — validation', () => {
     expect([400, 403, 429]).toContain(res.status);
   });
 });
+
+describe('POST /api/predict', () => {
+  it_if_server('returns prediction data structure', async () => {
+    const res = await request('POST', '/api/predict', { zone: 'Gate 1', minutesAhead: 15 });
+    // Same rate limit handling
+    if (res.status === 429 || res.status === 403) return;
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+    expect(res.body.data).toHaveProperty('currentDensity');
+    expect(res.body.data).toHaveProperty('predictedDensity');
+    expect(res.body.data).toHaveProperty('trend');
+  });
+});
+
+describe('POST /api/food', () => {
+  it_if_server('returns food recommendations structure', async () => {
+    const res = await request('POST', '/api/food', { preferences: 'spicy', limit: 2 });
+    if (res.status === 429 || res.status === 403) return;
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+    expect(res.body.data).toHaveProperty('recommendations');
+    expect(Array.isArray(res.body.data.recommendations)).toBe(true);
+  });
+});
+
+describe('POST /api/safety', () => {
+  it_if_server('returns safety incident analysis', async () => {
+    const res = await request('POST', '/api/safety', { description: 'Crowd grouping near exit' });
+    if (res.status === 429 || res.status === 403) return;
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+    expect(res.body.data).toHaveProperty('riskAssessment');
+    expect(res.body.data).toHaveProperty('recommendedActions');
+  });
+});
+
+describe('GET /api/metrics', () => {
+  it_if_server('returns basic metrics payload', async () => {
+    const res = await request('GET', '/api/metrics');
+    if (res.status === 429 || res.status === 403) return;
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+    expect(res.body.data).toHaveProperty('system');
+    expect(res.body.data.system).toHaveProperty('activeConnections');
+  });
+});
+

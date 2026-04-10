@@ -12,35 +12,14 @@ const { getModel, SYSTEM_INSTRUCTION } = require('../services/gemini');
 const { logEvent } = require('../middleware/logging');
 const { recordMetric } = require('../services/monitoring');
 
-/**
- * Validates and sanitizes chat input.
- * @param {string} message - User message
- * @returns {{ valid: boolean, error?: string, sanitized?: string }}
- */
-function validateInput(message) {
-  if (!message || typeof message !== 'string') {
-    return { valid: false, error: 'Message is required' };
-  }
-
-  const trimmed = message.trim();
-  if (trimmed.length === 0) {
-    return { valid: false, error: 'Message cannot be empty' };
-  }
-  if (trimmed.length > 500) {
-    return { valid: false, error: 'Message must be under 500 characters' };
-  }
-
-  // Basic sanitization — strip HTML tags
-  const sanitized = trimmed.replace(/<[^>]*>/g, '');
-  return { valid: true, sanitized };
-}
+const { validateChatInput } = require('../utils/validation');
 
 router.post('/', async (req, res) => {
   const startTime = Date.now();
 
   // Validate input
   const { message, history = [] } = req.body;
-  const validation = validateInput(message);
+  const validation = validateChatInput(message);
 
   if (!validation.valid) {
     return res.status(400).json({ error: validation.error });

@@ -11,20 +11,7 @@ function densityColor(d) {
   return '#ff5252';
 }
 
-function validateChatInput(message) {
-  if (!message || typeof message !== 'string') {
-    return { valid: false, error: 'Message is required' };
-  }
-  const trimmed = message.trim();
-  if (trimmed.length === 0) {
-    return { valid: false, error: 'Message cannot be empty' };
-  }
-  if (trimmed.length > 500) {
-    return { valid: false, error: 'Message must be under 500 characters' };
-  }
-  const sanitized = trimmed.replace(/<[^>]*>/g, '');
-  return { valid: true, sanitized };
-}
+const { validateChatInput } = require('../server/utils/validation');
 
 describe('densityColor', () => {
   test('returns green for low density (< 0.35)', () => {

@@ -57,6 +57,7 @@ export default function ChatTab() {
           style={{ background: 'transparent', border: '1px solid rgba(0,230,118,0.2)', color: '#e0ffe8', padding: '10px 12px' }}
         >
           <Trash2 size={14} aria-hidden="true" />
+          <span className="sr-only">Clear chat history</span>
         </button>
       </form>
     </div>

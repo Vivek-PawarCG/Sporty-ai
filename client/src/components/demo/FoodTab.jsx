@@ -112,7 +112,10 @@ export default function FoodTab() {
               <span className="food-item-name">{item.name}</span>
               <span className="food-item-dietary">
                 {item.dietary.map(d => (
-                  <span key={d} className="food-dietary-badge" title={DIETARY_LABELS[d]}>{DIETARY_ICONS[d]} {d}</span>
+                  <span key={d} className="food-dietary-badge" title={DIETARY_LABELS[d]}>
+                    <span aria-hidden="true">{DIETARY_ICONS[d]}</span>
+                    <span className="sr-only">{DIETARY_LABELS[d]}</span>
+                  </span>
                 ))}
               </span>
             </div>
@@ -150,8 +153,14 @@ export default function FoodTab() {
           </div>
           <div className="food-cart-actions">
             <div className="food-seat-inputs">
-              <input className="food-seat-input" value={section} onChange={e => setSection(e.target.value)} placeholder="Section" aria-label="Section" />
-              <input className="food-seat-input" value={seat} onChange={e => setSeat(e.target.value)} placeholder="Seat" aria-label="Seat number" />
+              <label>
+                <span className="sr-only">Section</span>
+                <input className="food-seat-input" value={section} onChange={e => setSection(e.target.value)} placeholder="Section" />
+              </label>
+              <label>
+                <span className="sr-only">Seat number</span>
+                <input className="food-seat-input" value={seat} onChange={e => setSeat(e.target.value)} placeholder="Seat" />
+              </label>
             </div>
             <button className="food-order-btn" onClick={placeOrder}>
               <Send size={14} aria-hidden="true" /> Order to Seat
