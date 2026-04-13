@@ -3,7 +3,7 @@
 > AI-powered real-time venue management for large-scale sporting events. Built with Google Gemini, Vertex AI, and 9 Google Cloud services.
 
 [![Google Cloud](https://img.shields.io/badge/Google%20Cloud-Run-4285F4?logo=googlecloud)](https://cloud.google.com/run)
-[![Gemini](https://img.shields.io/badge/Gemini-2.0%20Flash-00e676?logo=google)](https://ai.google.dev)
+[![Gemini](https://img.shields.io/badge/Gemini-2.5%20Flash-00e676?logo=google)](https://ai.google.dev)
 [![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js)](https://nodejs.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
 
@@ -11,7 +11,7 @@
 
 ## 🎯 Chosen Vertical
 
-**Physical Event Experience** — This webapp is a solution that improves the physical event experience for attendees at large-scale sporting venues, addressing crowd movement, waiting times, and real-time coordination.
+**Physical Event Experience** : This webapp is a solution that improves the physical event experience for attendees at large-scale sporting venues, addressing crowd movement, waiting times, and real-time coordination.
 
 ---
 
@@ -170,8 +170,8 @@ Meaningful integration of Google services across the platform:
 
 ```bash
 # 1. Clone
-git clone https://github.com/YOUR_USERNAME/sporty-ai.git
-cd sporty-ai
+git clone https://github.com/Vivek-PawarCG/Sporty-ai.git
+cd Sporty-ai
 
 # 2. Configure
 cp .env.example .env
